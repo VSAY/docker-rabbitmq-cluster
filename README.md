@@ -10,13 +10,15 @@ docker build -t rabbitmq-cluster:latest
 
 # Running with docker-compose
 
+# To start standalone 
+
 If you want to run rabbitmq on one machine use [docker-compose](https://github.com/docker/compose/)
 
 ```
 docker-compose up -d 
 ```
 
-# To start Rabbit - Non Cluster 
+Standalone node is started up this way:
 
 ```
 rabbit1:

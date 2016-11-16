@@ -2,10 +2,10 @@ Docker images to run RabbitMQ cluster. It extends the official image with a rabb
 
 # Building
 
-Once you clone the project locally use [captain](https://github.com/harbur/captain) to build the image or do with docker:
+Once you clone the project locally build the image:
 
 ```
-docker build -t harbur/rabbitmq-cluster .
+docker build -t rabbitmq-cluster:latest
 ```
 
 # Running with docker-compose
@@ -13,14 +13,27 @@ docker build -t harbur/rabbitmq-cluster .
 If you want to run the cluster on one machine use [docker-compose](https://github.com/docker/compose/)
 
 ```
-docker-compose up -d
+docker-compose up -d --file 
 ```
 
-By default 3 nodes are started up this way:
+# To start Rabbit - Non Cluster 
 
 ```
 rabbit1:
-  image: harbur/rabbitmq-cluster
+  image: rabbitmq-cluster
+  environment:
+    - ERLANG_COOKIE=abcdefg
+  ports:
+    - "5672:5672"
+    - "15672:15672"
+```  
+
+# To start a Cluster 
+Default 3 nodes are started up this way:
+
+```
+rabbit1:
+  image: rabbitmq-cluster
   hostname: rabbit1
   environment:
     - ERLANG_COOKIE=abcdefg
@@ -28,7 +41,7 @@ rabbit1:
     - "5672:5672"
     - "15672:15672"
 rabbit2:
-  image: harbur/rabbitmq-cluster
+  image: rabbitmq-cluster
   hostname: rabbit2
   links:
     - rabbit1
@@ -41,7 +54,7 @@ rabbit2:
     - "5673:5672"
     - "15673:15672"
 rabbit3:
-  image: harbur/rabbitmq-cluster
+  image: rabbitmq-cluster
   hostname: rabbit3
   links:
     - rabbit1
@@ -61,4 +74,4 @@ Once cluster is up:
 
 # Credits
 
-* Inspired by https://github.com/bijukunjummen/docker-rabbitmq-cluster
+* Inspired by https://github.com/harbur/docker-rabbitmq-cluster

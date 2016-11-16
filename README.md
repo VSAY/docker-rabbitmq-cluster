@@ -10,10 +10,10 @@ docker build -t rabbitmq-cluster:latest
 
 # Running with docker-compose
 
-If you want to run the cluster on one machine use [docker-compose](https://github.com/docker/compose/)
+If you want to run rabbitmq on one machine use [docker-compose](https://github.com/docker/compose/)
 
 ```
-docker-compose up -d --file 
+docker-compose up -d 
 ```
 
 # To start Rabbit - Non Cluster 
@@ -29,6 +29,13 @@ rabbit1:
 ```  
 
 # To start a Cluster 
+
+If you want to run the cluster on one machine use [docker-compose](https://github.com/docker/compose/)
+
+```
+docker-compose up -d --file rabbitmq-cluster-docker-compose.yml
+```
+
 Default 3 nodes are started up this way:
 
 ```

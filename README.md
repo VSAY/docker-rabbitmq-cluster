@@ -5,7 +5,7 @@ Docker images to run RabbitMQ cluster. It extends the official image with a rabb
 Once you clone the project locally build the image:
 
 ```
-docker build -t rabbitmq-cluster:latest
+docker build -t rabbitmq-cluster:latest .
 ```
 
 # Running with docker-compose

@@ -1,6 +1,6 @@
 rabbitmq:
   image: rabbitmq-cluster
-  restart: true
+  restart: "true"
   environment:
     - ERLANG_COOKIE=abcdefg
   ports:
